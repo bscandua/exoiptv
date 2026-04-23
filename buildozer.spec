@@ -1,7 +1,7 @@
 [app]
-title = Deathless IPTV
-package.name = deathless.checker
-package.domain = org.deathless
+title = OSMANLITOKADI IPTV
+package.name = osmanlitokadi.checker
+package.domain = org.osmanlitokadi
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
 version = 1.0.0
