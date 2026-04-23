@@ -1,0 +1,39 @@
+name: Build Android APK
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libffi-dev python3-dev libltdl-dev libssl-dev zlib1g-dev libncurses5-dev libncursesw5-dev libreadline-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev autoconf automake libtool openjdk-17-jdk
+          pip install --upgrade pip
+          pip install buildozer cython==0.29.33 flet==0.21.2
+      - name: Build with Buildozer
+        run: |
+          mkdir -p ~/.android
+          touch ~/.android/repositories.cfg
+          buildozer -v android debug
+        env:
+          APP_ANDROID_ACCEPT_SDK_LICENSE: "1"
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: OSMANLITOKADI-IPTV
+          path: bin/*.apk
+          
