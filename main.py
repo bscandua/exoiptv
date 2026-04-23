@@ -15,11 +15,11 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class IPTVChecker(App):
     def build(self):
-        self.title = "Deathless Pro V2"
+        self.title = "OSMANLITOKADI Pro V2"
         self.hits = []
         
         layout = BoxLayout(orientation='vertical', padding=15, spacing=10)
-        layout.add_widget(Label(text="DEATHLESS PRO CHECKER", font_size='22sp', color=(0.38, 0.4, 0.94, 1)))
+        layout.add_widget(Label(text="OSMANLITOKADI PRO CHECKER", font_size='22sp', color=(0.38, 0.4, 0.94, 1)))
         
         self.stats = Label(text="Toplam: 0 | HIT: 0 | Pasif: 0", size_hint_y=None, height=40)
         layout.add_widget(self.stats)
